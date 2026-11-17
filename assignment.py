@@ -56,35 +56,12 @@ def DecimalToBinary(Number):
 def Editor(Commands):
     global Stack, TopOfStack
     S = ""
-    for i in range(1,len(Commands)):
+    for i in range(0,len(Commands)):
         everycommand = Commands[i].split(" ")
         if everycommand[0] == "undo":
             Pop()
         else:
             Push(everycommand[1])
-        for i in range(TopOfStack+1):
-            S = S + Stack[i]
-        return S
-
-print(Editor(["type c", "type a", "type r", "undo", "type t"]))
-
-# Exercise 4
-def Editor(Commands):
-  global Stack, TopOfStack
-  TopOfStack = -1  # Added: clears the stack first
-
-  for i in range(
-      0, len(Commands)
-  ):  # Changed 1 to 0 so the first command isn't skipped
-    parts = Commands[i].split(" ")  # Added (" ") to actually run split
-
-    if parts[0] == "undo":  # Added: handles the "undo" command
-      Pop()
-    else:
-      Push(parts[1])  # Changed: pushes just the letter (index 1)
-
-  # Added: builds and returns the final word from the stack
-  result = ""
-  for i in range(TopOfStack + 1):
-    result = result + Stack[i]
-  return result
+    for i in range(TopOfStack+1):
+        S = S + Stack[i]
+    return S
